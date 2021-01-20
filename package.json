@@ -1,0 +1,24 @@
+{
+  "name": "yuumi",
+  "version": "1.0.0",
+  "description": "owo",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Aladdin",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.6.3",
+    "discord.js-musicbot-addon": "^13.9.1",
+    "enmap": "^5.2.4",
+    "erela.js": "^1.1.8",
+    "fs": "0.0.1-security",
+    "node-fetch": "^2.6.1",
+    "node-osu": "^2.2.0",
+    "opusscript": "0.0.7",
+    "superagent": "^6.1.0",
+    "teemojs": "^1.5.0",
+    "ytdl-core": "^2.1.7"
+  }
+}

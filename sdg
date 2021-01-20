@@ -1,0 +1,53 @@
+
+const Discord = require('discord.js');
+ module.exports.run = async (client, message)=> {
+
+   
+     if (message.content.startsWith('+help')){
+     let sembed = new Discord.RichEmbed()
+     .setDescription("**Voici la liste des commandes disponible **"  + `${message.author.username}`)
+     .setColor('BLUE')
+     .setThumbnail(message.guild.iconURL)
+     .addField("**+serveur**",'Affiche les informations du serveur' , true)
+     .addField("**+play**", 'Met de la musique en vocal ( en DEV)', true)
+     .addField("**+stop**",'Arrete la musique en cours ( en DEV)' , true)
+     
+     .addField("**+google**",'Permet de faire des recherches' , true)
+     .addField("**+8ball**", 'Répond aléatoirement a vos questions', true)
+     .setFooter("Fin")
+     
+     return message.channel.send(sembed);
+     }
+ 
+   
+
+    }
+
+
+
+
+
+
+
+const ytdl = require ('ytdl-core');
+
+exports.run = async (bot, message, args) => {
+    if (!message.member.voiceChannel) return message.channel.send("Connectez vous à un salon vocal!")
+    if (!message.guild.me) return message.channel.send("Je suis déja connecter")
+    if (!args[0])
+    return message.channel.send("Il me faut un lien pour ajouter la la musique!");
+
+    const validate = await ytdl.validateURL(args[0]);
+    if (!validate) return message.channel.send("Il n'y a pas de lien ou bien le lien est erroné");
+
+    const info = await ytdl.getInfo(args[0]);
+
+const connection = await message.member.voiceChannel.join();
+const dispatcher = await connection.playStream(ytdl(args[0], {filter: 'audioonly'}));
+message.channel.send(`Musique ajoutée : ${info.title}`);
+
+
+
+}
+
+    
